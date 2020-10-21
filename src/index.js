@@ -8,7 +8,6 @@ import MessageDisplay from './components/MessageDisplay';
 import ChatBox from './components/ChatBox';
 import firebase from 'firebase'
 import FirebaseKey from './Keys/Key.js'
-// import { db } from '../services/firebase'
 
 
 
@@ -19,23 +18,65 @@ require('firebase/database');
 const firebaseConfig = FirebaseKey;
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth
-export const db = firebase.firestore()
-var database = firebase.database();
+export const db = firebase.database()
+// var database = firebase.database();
 var members = ["Tommy", "Billy"];
-class App extends React.Component {
-    render() {
-      return (
-      <>
-          <div className="topBar">
-            <NavigationButton/>
-            <ChannelForm/>
-            <ProfilePic/>
-          </div>
-            <ChatBox/>
-            <MessageDisplay/>
-      </>
-      );
+// class App extends React.Component {
+//     render() {
+//       return (
+//       <>
+//           <div className="topBar">
+//             <NavigationButton/>
+//             <ChannelForm/>
+//             <ProfilePic/>
+//           </div>
+//             <ChatBox/>
+//             <MessageDisplay/>
+//       </>
+//       );
+//     }
+//   }
+  export default class App extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        user: auth().currentUser,
+        chats: [],
+        content: '',
+        readError: null,
+        writeError: null
+      };
     }
+    async componentDidMount() {
+      this.setState({ readError: null });
+      try {
+        db.ref("chats").on("value", snapshot => {
+          let chats = [];
+          snapshot.forEach((snap) => {
+            chats.push(snap.val());
+          });
+          this.setState({ chats });
+        });
+      } catch (error) {
+        this.setState({ readError: error.message });
+      }
+    }
+    // render(){
+    //   return (
+    //     <>
+    //     <div>
+    //       <div className="chats">
+    //         {this.state.chats.map(chat => {
+    //           return <p key={chat.timestamp}>{chat.content}</p>
+    //         })}
+    //       </div>
+    //       <div>
+    //         Login in as: <strong>{this.state.user.email}</strong>
+    //       </div>
+    //     </div>
+    //     </>
+    //   );
+    // }
   }
   var connectedRef = firebase.database().ref(".info/connected");
   connectedRef.on("value", function(snap) {
