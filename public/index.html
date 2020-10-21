@@ -28,7 +28,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <script src="../index.js"></script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +39,32 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCp_N5SDtVtg-_gx9k5lAt-G7seV-i57xk",
+    authDomain: "chatapp-cohort10-noah.firebaseapp.com",
+    databaseURL: "https://chatapp-cohort10-noah.firebaseio.com",
+    projectId: "chatapp-cohort10-noah",
+    storageBucket: "chatapp-cohort10-noah.appspot.com",
+    messagingSenderId: "534550356866",
+    appId: "1:534550356866:web:b202c448e11d6b197de59b",
+    measurementId: "G-ZFF1EPC0L2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<div id="root"></div>
   </body>
 </html>

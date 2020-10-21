@@ -1,0 +1,60 @@
+.umph {
+    height:100%;
+    width:300px;
+    background-color:red;
+    position: absolute;
+    top:0%;
+}
+body{
+    width:100%;
+    height:100%;
+    margin: 0%;
+}
+html{
+    height: 100%;
+  }
+.menu-item{
+    width:300px;
+    background-color:black;
+}
+.topBar{
+    width:100%;
+    height: 10%;
+    background-color: gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position:fixed;
+}
+.profilePic{
+    margin:30px;
+}
+.navMenu{
+    width:200px;
+    height: 30px;
+}
+.ChatBox{
+    width:100%;
+    height:15%;
+    background-color: lightgray;
+    bottom:0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.MessageDisplay{
+    height:75%;
+    width:100%;
+    top:10%;
+    background-color: lightgreen;
+    overflow: scroll;
+    position: absolute;
+}
+#root{
+    height:100%;
+}
+.submitChat{
+    height: 50px;
+    width: 100px;
+}
